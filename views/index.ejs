@@ -26,10 +26,13 @@
                 </div>
                 <div class="card-action"></div>
                 <ul class="collection">
+                  <% tasks.forEach(task => { %>
+                      <li class="collection-item"><%= task %></li>
+                  <% }) %>
                   <li class="collection-item">Study HTML</li>
                   <li class="collection-item">Study CSS</li>
                   <li class="collection-item">Study JS</li>
-                </ul>
+              </ul>
               </div>
           </div></body>
             <!-- Compiled and minified JavaScript -->
