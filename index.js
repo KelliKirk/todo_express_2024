@@ -21,9 +21,9 @@ const readFile = (filename) => {
         });
     })
 } 
-const writeFile = (filename) => {
+const writeFile = (filename, data) => {
     return new Promise((resolve, reject) => {
-        fs.readFile(filename, data, 'utf8', err => {
+        fs.writeFile(filename, data, 'utf8', err => {
             if (err) {
               console.error(err);
               return;
