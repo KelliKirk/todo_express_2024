@@ -36,7 +36,7 @@ app.post('/', (req, res) => {
         .then((tasks) => {
             let index
             if(tasks.length === 0){
-                index = 0
+                index = 1
             } else {
                 index = tasks[tasks.length - 1].id + 1 
             } 
@@ -59,6 +59,27 @@ app.post('/', (req, res) => {
                 }
             });
     })
+})
+
+app.get('/delete-task/:taskID' , (req, res) => {
+    let deletedTaskID = parseInt(req.params.taskID)
+    readFile('./tasks.json')
+    .then((tasks) => { 
+        tasks.forEach((task, index) => {
+            if (task.id === deletedTaskID) {
+                tasks.splice(index, 1)
+            }
+        })
+        const data = JSON.stringify(tasks, null, 2)
+
+        fs.writeFile('./tasks.json', data, err => {
+            if (err) {
+              console.error(err);
+            } else {
+                res.redirect('/')
+            }
+        });
+})
 })
 
 app.listen(3001, () => {

@@ -1,17 +1,5 @@
 [
   {
-    "id": 1,
-    "task": "Study HTML"
-  },
-  {
-    "id": 2,
-    "task": "Study CSS"
-  },
-  {
-    "id": 3,
-    "task": "Study JS"
-  },
-  {
     "id": 4,
     "task": "Get some rest"
   },
