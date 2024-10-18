@@ -21,6 +21,17 @@ const readFile = (filename) => {
         });
     })
 } 
+const writeFile = (filename) => {
+    return new Promise((resolve, reject) => {
+        fs.readFile(filename, data, 'utf8', err => {
+            if (err) {
+              console.error(err);
+              return;
+            }
+            resolve(true)
+        });
+    })
+} 
 
 app.get('/', (req, res) => {
     readFile('./tasks.json')
@@ -47,18 +58,10 @@ app.post('/', (req, res) => {
             } 
 
             tasks.push(newTask)
-            console.log(tasks)
-            
             const data = JSON.stringify(tasks, null, 2)
-
-            fs.writeFile('./tasks.json', data, err => {
-                if (err) {
-                  console.error(err);
-                } else {
-                    res.redirect('/')
-                }
-            });
-    })
+            writeFile('./tasks.json' , data)
+            res.redirect('/')
+        })
 })
 
 app.get('/delete-task/:taskID' , (req, res) => {
@@ -71,16 +74,11 @@ app.get('/delete-task/:taskID' , (req, res) => {
             }
         })
         const data = JSON.stringify(tasks, null, 2)
+        writeFile('./tasks.json' , data)
+        res.redirect('/')
+    })
+})
 
-        fs.writeFile('./tasks.json', data, err => {
-            if (err) {
-              console.error(err);
-            } else {
-                res.redirect('/')
-            }
-        });
-})
-})
 
 app.listen(3001, () => {
     console.log('Server is started http://localhost:3001')
