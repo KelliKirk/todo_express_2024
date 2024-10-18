@@ -1,26 +1,34 @@
 [
-    {
+  {
     "id": 1,
-    "task":"Study HTML"
-},
-
-{"id": 2,
-"task" : "Study CSS"},
-
-{"id": 3,
-"task": "Study JS"},
-
-{
+    "task": "Study HTML"
+  },
+  {
+    "id": 2,
+    "task": "Study CSS"
+  },
+  {
+    "id": 3,
+    "task": "Study JS"
+  },
+  {
     "id": 4,
     "task": "Get some rest"
-},
-
-{"id": 5,
-"task": "Study HTTP"},
-
-{"id": 6,
-"task": "Study JSON"},
-
-{"id": 7,
-"task": "Study Node FS"}
+  },
+  {
+    "id": 5,
+    "task": "Study HTTP"
+  },
+  {
+    "id": 6,
+    "task": "Study JSON"
+  },
+  {
+    "id": 7,
+    "task": "Study Node FS"
+  },
+  {
+    "id": 8,
+    "task": "Study Objects"
+  }
 ]
