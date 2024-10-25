@@ -10,5 +10,9 @@
   {
     "id": 3,
     "task": "Study HTML"
+  },
+  {
+    "id": 4,
+    "task": "Error handling"
   }
 ]
