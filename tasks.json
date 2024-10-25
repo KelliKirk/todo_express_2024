@@ -1,6 +1,14 @@
 [
   {
     "id": 1,
-    "task": "Go to class"
+    "task": "Study HTTP"
+  },
+  {
+    "id": 2,
+    "task": "Study JavaScript"
+  },
+  {
+    "id": 3,
+    "task": "Study HTML"
   }
 ]

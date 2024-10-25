@@ -80,18 +80,15 @@ app.get('/delete-task/:taskID' , (req, res) => {
 })
 app.get('/delete-tasks', (req, res) => {
     // Kustutame kõik ülesanded
-    writeFile('./tasks.json', JSON.stringify([], null, 2))
-    //writeFile: Funktsioon, mis kirjutab andmed faili. Selles kontekstis kasutatakse seda selleks, et kirjutada tühja massiivi [] ülesannete faili.
-    //JSON.stringify([], null, 2): Siin teisendatakse tühja massiivi JSON-i stringiks ja seejärel kirjutatakse see ülesannete faili tasks.json. See tühistab kõik olemasolevad ülesanded.
-    //null ja 2 on lisaparametrid, mis määravad, kuidas JSON stringina vormistatakse (muutmata objektivõtmeid ja kasutades 2 taandega tühikut).
-    .then(() => res.redirect('/'))
-    //writeFile tagastab lubaduse (Promise), mis tähendab, et see töötab asünkroonselt. Kui ülesannete faili kirjutamine on edukalt lõpetatud, siis see täidab then-bloki.
-    //Kui ülesannete fail on edukalt tühjendatud, käivitub then-blokk.
-    //res.redirect('/'): Kui ülesannete fail on tühjaks kirjutatud, suunatakse kasutaja tagasi avalehele (/), kus kuvati kõik ülesanded. Kuna nüüd failis ei ole enam ülesandeid, on ülesandeloend tühi.
+   readFile('./tasks.json')
+    .then(tasks => {
+        tasks = []
+        const data = JSON.stringify(tasks, null, 2)
+        writeFile('./tasks.json' , data)
+        res.redirect('/')
+    } )
 })
-//Kui kasutaja külastab URL-i http://localhost:3001/delete-tasks, saadab brauser GET-päringu sellele aadressile. Server saab selle päringu ja hakkab vastavalt käituma.
-//Kui server saab GET-päringu aadressile /delete-tasks, otsib see vastavat ruuterit. Kui see ruuter on defineeritud, käivitab see vastava koodi.
-//Kui brauser suunatakse tagasi algavale lehele /, küsib server uuesti ülesandeloendit (tasks.json). Kuna see fail on nüüd tühi (kõik ülesanded kustutati), ei kuvata enam ühtegi ülesannet.
+
 
 
 
