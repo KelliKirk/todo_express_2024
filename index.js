@@ -110,6 +110,56 @@ app.get('/delete-tasks', (req, res) => {
     res.redirect('/')
 })
 
+app.get('/edit-task/:taskID', (req, res) => {
+    const taskID = parseInt(req.params.taskID);
+    readFile('./tasks.json')
+        .then(tasks => {
+            const task = tasks.find(t => t.id === taskID);
+            if (task) {
+                res.render('edit', { task: task }); // Kui ülesanne leitakse, kuvatakse redigeerimisvorm
+            } else {
+                res.redirect('/'); // Kui ülesannet ei leita, suunatakse tagasi avalehele
+            }
+        });
+});
+
+//Ruuter, mis hõlmab nii veahaldust kui redigeerimist
+app.post('/edit-task/:taskID', (req, res) => {
+    const taskID = parseInt(req.params.taskID);
+    const editedTask = req.body.task;
+
+    readFile('./tasks.json')
+        .then(tasks => {
+            const taskIndex = tasks.findIndex(t => t.id === taskID);
+
+            // Kontrollime, kas ülesanne leiti
+            if (taskIndex !== -1) {
+                // Kontrollime, kas redigeerimisväli on tühi
+                if (editedTask.trim().length === 0) {
+                    // Kui tühi, seadistame veateate ja renderdame redigeerimisvormi
+                    const error = 'Please insert correct task data';
+                    return res.render('edit', {
+                        task: tasks[taskIndex], // Tagastame olemasoleva ülesande, et see oleks redigeerimisvormis nähtav
+                        error: error
+                    });
+                }
+
+                // Kui ülesanne leiti ja on korrektne, uuendame seda
+                tasks[taskIndex].task = editedTask;
+                const data = JSON.stringify(tasks, null, 2);
+                
+                return writeFile('./tasks.json', data)
+                    .then(() => res.redirect('/')); // Suuname tagasi avalehele
+            } else {
+                res.redirect('/'); // Kui ülesannet ei leita, suunatakse tagasi avalehele
+            }
+        });
+});
+
+
+
+
+
 app.listen(3001, () => {
     console.log('Server is started http://localhost:3001')
 })

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Task</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m6">
+              <div class="card">
+                <div class="card-content">
+                  <% if (typeof error !== 'undefined') { %> <!-- Kontrollime, kas error on määratud -->
+                  <div class="row teal lighten-4">
+                    <div class="col s12">
+                      <p class="center-align">
+                        <%= error %>
+                      </p>
+                    </div>
+                  </div>
+                  <% } %> <!-- Sulgeme if ploki -->
+
+                  <div class="container">
+                      <h4>Edit Task</h4>
+                      <form action="/edit-task/<%= task.id %>" method="post">
+                          <div class="input-field">
+                              <input type="text" name="task" id="task" value="<%= task.task %>">
+                              <label for="task" class="active">Edit Task</label>
+                          </div>
+                          <button type="submit" class="btn">Update Task</button>
+                          <a class="btn" href="/">Cancel</a>
+                      </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

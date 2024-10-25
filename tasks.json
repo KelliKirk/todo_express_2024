@@ -1,18 +1,18 @@
 [
   {
-    "id": 1,
+    "id": 4,
+    "task": "Error handling"
+  },
+  {
+    "id": 5,
+    "task": "Independent work"
+  },
+  {
+    "id": 6,
     "task": "Study HTTP"
   },
   {
-    "id": 2,
-    "task": "Study JavaScript"
-  },
-  {
-    "id": 3,
-    "task": "Study HTML"
-  },
-  {
-    "id": 4,
-    "task": "Error handling"
+    "id": 7,
+    "task": "Rest"
   }
 ]

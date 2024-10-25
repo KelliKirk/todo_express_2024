@@ -44,17 +44,21 @@
                 </div>
                 <div class="card-action">
                     <ul class="collection">
-                      <% tasks.forEach(task => { %>
-                        <li class="collection-item">
-                          <%= task.task %>
-                          <a 
-                            href="delete-task/<%= task.id %>" 
-                            class="secondary-content"
-                          >
-                            <i class="material-icons">delete</i>
-                          </a>
-                        </li>
-                      <% }) %>
+  <% tasks.forEach(task => { %>
+    <li class="collection-item">
+      <%= task.task %>
+      <!-- Delete ikoon -->
+      <a href="delete-task/<%= task.id %>" class="secondary-content">
+        <i class="material-icons">delete</i>
+      </a>
+      <!-- Edit ikoon -->
+      <a href="edit-task/<%= task.id %>" class="secondary-content" style="margin-right: 10px;">
+        <i class="material-icons">edit</i>
+      </a>
+    </li>
+  <% }) %>
+</ul>
+
                       </ul>
                       <a href="delete-tasks" class="btn">Clear All</a>
                 </div>
