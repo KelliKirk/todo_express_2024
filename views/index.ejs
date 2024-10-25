@@ -30,20 +30,24 @@
                         </div>
                       </div>
                       <input type="submit" value="Add Task" class="btn"/>
-                      <a href="/delete-tasks" class="btn">CLEAR ALL</a>
                     </form>
                   </div>
                 </div>
                 <div class="card-action">
                     <ul class="collection">
                       <% tasks.forEach(task => { %>
-                        <li class="collection-item"><%= task.task %>
-                        <a href="delete-task/<%= task.id %>" class="secondary-content"><i class="material-icons">delete</i></a>
+                        <li class="collection-item">
+                          <%= task.task %>
+                          <a 
+                            href="delete-task/<%= task.id %>" 
+                            class="secondary-content"
+                          >
+                            <i class="material-icons">delete</i>
+                          </a>
+                        </li>
                       <% }) %>
-                    </li>
-                  </ul>
-                    </div>
-                    
+                      </ul>
+                      <a href="delete-tasks" class="btn">Clear All</a>
                 </div>
               </div>
             </div>
