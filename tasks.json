@@ -1,18 +1,6 @@
 [
   {
-    "id": 5,
-    "task": "Study HTTP"
-  },
-  {
-    "id": 6,
-    "task": "Study JSON"
-  },
-  {
-    "id": 7,
-    "task": "Study Node FS"
-  },
-  {
-    "id": 8,
-    "task": "Study Objects"
+    "id": 1,
+    "task": "Go to class"
   }
 ]
